@@ -24,7 +24,7 @@ nav ul a:hover{opacity:1;color:var(--or)}
 @media(max-width:760px){nav ul{display:none}}
 .bandeau{position:fixed;top:64px;left:0;right:0;z-index:49;background:var(--or);color:#141414;text-align:center;padding:9px 5vw;font-size:.82rem;letter-spacing:.06em;font-weight:500}
 .hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 15%}
 .hero .bg{position:absolute;inset:0;background:url('photos/devanture_large_hd.jpg') center 38%/cover no-repeat;animation:kenburns 22s ease-in-out infinite alternate;filter:brightness(.85)}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.45) 0%,rgba(26,26,26,.35) 35%,rgba(26,26,26,.92) 100%)}
@@ -47,7 +47,7 @@ h2{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:.03em;margin-bottom:36px}
 .nouveautes .sub{opacity:.65;margin:-24px 0 40px;letter-spacing:.08em}
 .swiper{width:100%;padding:40px 0 50px;perspective:1400px}
 .swiper-slide{width:min(380px,74vw);height:520px;border-radius:6px;overflow:hidden;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.7);transition:filter .4s}
-.swiper-slide:not(.swiper-slide-active){filter:brightness(.45) blur(1px)}
+.swiper-slide:not(.swiper-slide-active){filter:brightness(.45)}
 .swiper-slide-active{box-shadow:0 40px 90px rgba(0,0,0,.8),0 0 60px rgba(201,162,75,.18)}
 .swiper-slide img{width:100%;height:100%;object-fit:cover}
 .swiper-slide .tag{position:absolute;left:14px;bottom:14px;background:rgba(20,20,20,.85);border:1px solid rgba(201,162,75,.5);padding:6px 14px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
@@ -88,6 +88,7 @@ h2{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:.03em;margin-bottom:36px}
 .venir .grid{display:grid;grid-template-columns:1fr 1fr;gap:4vw}
 @media(max-width:860px){.venir .grid{grid-template-columns:1fr}}
 .venir img{width:100%;height:100%;min-height:380px;object-fit:cover;border-radius:3px}
+.venir .map{width:100%;height:100%;min-height:450px;border:0;border-radius:6px;filter:grayscale(1) contrast(1.05)}
 .venir .panel{background:var(--noir2);padding:44px 38px;border:1px solid rgba(201,162,75,.3)}
 .venir .panel h3{font-size:1.9rem;margin-bottom:22px}
 .venir .ligne{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.95rem;opacity:.85}
@@ -96,6 +97,13 @@ h2{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:.03em;margin-bottom:36px}
 .btn:hover{background:#d9b661}
 footer{padding:44px 5vw;text-align:center;font-size:.8rem;opacity:.55;letter-spacing:.1em;border-top:1px solid rgba(201,162,75,.2)}
 footer .logo{font-size:1.2rem;display:block;margin-bottom:10px;opacity:1}
+.lightbox-img{cursor:pointer;transition:transform .4s}
+.lightbox-img:hover{transform:scale(1.02)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+.lightbox.on{opacity:1;pointer-events:auto}
+.lightbox img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox .close{position:absolute;top:18px;right:24px;color:#fff;font-size:2.6rem;line-height:1;cursor:pointer;opacity:.7;transition:.3s}
+.lightbox .close:hover{opacity:1}
 </style>
 </head>
 <body>
@@ -162,7 +170,7 @@ footer .logo{font-size:1.2rem;display:block;margin-bottom:10px;opacity:1}
   <div class="kicker">Informations</div>
   <h2>L'actualité de la boutique</h2>
   <div class="carte-une">
-    <img src="photos/actualite_tour_de_france.jpg" alt="Ouverture exceptionnelle Tour de France">
+    <img class="lightbox-img" src="photos/actualite_tour_de_france.jpg" alt="Ouverture exceptionnelle Tour de France">
     <div class="txt">
       <span class="pin">À la une</span>
       <div class="date">Juillet 2026</div>
@@ -172,11 +180,11 @@ footer .logo{font-size:1.2rem;display:block;margin-bottom:10px;opacity:1}
   </div>
   <div class="duo">
     <div class="mini">
-      <img src="photos/grande_taille_chemises.jpg" alt="Nouveau portant grande taille">
+      <img class="lightbox-img" src="photos/grande_taille_chemises.jpg" alt="Nouveau portant grande taille">
       <div class="txt"><div class="date">Nouveauté</div><h4>Nouveau portant grande taille</h4></div>
     </div>
     <div class="mini">
-      <img src="photos/shorts_jean.jpg" alt="Arrivage d'été">
+      <img class="lightbox-img" src="photos/shorts_jean.jpg" alt="Arrivage d'été">
       <div class="txt"><div class="date">Été 2026</div><h4>Arrivage d'été</h4></div>
     </div>
   </div>
@@ -207,7 +215,7 @@ footer .logo{font-size:1.2rem;display:block;margin-bottom:10px;opacity:1}
   <div class="kicker">Venir</div>
   <h2>À deux pas du centre</h2>
   <div class="grid">
-    <img src="photos/devanture_portant.jpg" alt="Devanture de la boutique">
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2771.8!2d6.4786!3d46.3724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDIyJzIwLjYiTiA2wrAyOCc0My4wIkU!5e0!3m2!1sfr!2sfr!4v1690000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <div class="panel">
       <h3>L'audacieux Boutique</h3>
       <div class="ligne"><b>Adresse</b> 5, rue des Granges — 74200 Thonon-les-Bains</div>
@@ -221,14 +229,22 @@ footer .logo{font-size:1.2rem;display:block;margin-bottom:10px;opacity:1}
   <span class="logo">L'audacieux<em>Boutique</em></span>
   5, rue des Granges — 74200 Thonon-les-Bains
 </footer>
+<div class="lightbox" id="lightbox"><span class="close">&times;</span><img src="" alt=""></div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 new Swiper('.swiper',{effect:'coverflow',grabCursor:true,centeredSlides:true,slidesPerView:'auto',loop:true,speed:900,
-  coverflowEffect:{rotate:50,stretch:-30,depth:320,modifier:1.1,slideShadows:true},
+  coverflowEffect:{rotate:20,stretch:0,depth:160,modifier:1,slideShadows:false},
   autoplay:{delay:3600,disableOnInteraction:false},
   navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const lb=document.getElementById('lightbox'),lbImg=lb.querySelector('img'),lbClose=lb.querySelector('.close');
+function openLightbox(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('on');}
+function closeLightbox(){lb.classList.remove('on');lbImg.src='';}
+document.querySelectorAll('.lightbox-img').forEach(img=>img.addEventListener('click',()=>openLightbox(img.src,img.alt)));
+lbClose.addEventListener('click',closeLightbox);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('on'))closeLightbox();});
 </script>
 </body>
 </html>
