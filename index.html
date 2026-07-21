@@ -47,7 +47,7 @@ h2{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:.03em;margin-bottom:36px}
 .nouveautes .sub{opacity:.65;margin:-24px 0 40px;letter-spacing:.08em}
 .swiper{width:100%;padding:40px 0 50px;perspective:1400px}
 .swiper-slide{width:min(380px,74vw);height:520px;border-radius:6px;overflow:hidden;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.7);transition:filter .4s}
-.swiper-slide:not(.swiper-slide-active){filter:brightness(.45)}
+.swiper-slide:not(.swiper-slide-active){filter:brightness(.5)}
 .swiper-slide-active{box-shadow:0 40px 90px rgba(0,0,0,.8),0 0 60px rgba(201,162,75,.18)}
 .swiper-slide img{width:100%;height:100%;object-fit:cover}
 .swiper-slide .tag{position:absolute;left:14px;bottom:14px;background:rgba(20,20,20,.85);border:1px solid rgba(201,162,75,.5);padding:6px 14px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
@@ -232,8 +232,8 @@ footer .logo{font-size:1.2rem;display:block;margin-bottom:10px;opacity:1}
 <div class="lightbox" id="lightbox"><span class="close">&times;</span><img src="" alt=""></div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-new Swiper('.swiper',{effect:'coverflow',grabCursor:true,centeredSlides:true,slidesPerView:'auto',loop:true,speed:900,
-  coverflowEffect:{rotate:20,stretch:0,depth:160,modifier:1,slideShadows:false},
+new Swiper('.swiper',{effect:'coverflow',grabCursor:true,centeredSlides:true,slidesPerView:'auto',loop:true,speed:800,
+  coverflowEffect:{rotate:0,stretch:40,depth:120,modifier:1,slideShadows:false},
   autoplay:{delay:3600,disableOnInteraction:false},
   navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});
